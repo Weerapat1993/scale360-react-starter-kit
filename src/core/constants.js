@@ -3,12 +3,12 @@ import { asyncActionType } from '../utils/actionTypes'
 //=========================================================
 //  CONSTANTS
 //---------------------------------------------------------
-export const APP_NAME = 'scale360-react-starter-kit';
+export const APP_NAME = 'Scale360 React Starter Kit';
 
 //=====================================
 //  API
 //-------------------------------------
-export const API_BASE_URL = 'http://localhost:3000';
+export const API_BASE_URL = 'https://scale360-react-starter-kit.firebaseapp.com';
 
 export const API = {
   TASK: API_BASE_URL + '/assets/json/task.json',

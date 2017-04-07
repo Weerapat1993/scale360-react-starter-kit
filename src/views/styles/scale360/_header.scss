@@ -64,8 +64,9 @@
 
 
   .link--github {
-    @include fa-icon(github);
-    font-size: rem(24px);
+    padding-top: 1px;
+    width: 22px;
+    height: 24px;
 
     &:before {
       font-family: 'FontAwesome';

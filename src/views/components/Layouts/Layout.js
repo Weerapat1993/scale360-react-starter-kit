@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header'
 import NodeEnv from './NodeEnv'
+import { APP_NAME } from '../../../core/constants'
 
 class Layout extends Component {
   render () {
@@ -9,7 +10,7 @@ class Layout extends Component {
         <Header/>
           <div className="g-row">
             <div className="g-col">
-            <h2>Todo Redux Design Pattern</h2>
+            <h2>{ APP_NAME }</h2>
             { this.props.children }
             </div>
           </div>
