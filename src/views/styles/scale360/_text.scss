@@ -1,0 +1,59 @@
+// Floats
+.clearfix            { @include clearfix; }
+.center-block        { @include center-block; }
+.pull-right          { float: right !important; }
+.pull-left           { float: left !important; }
+
+// Font Weight
+.bold                { font-weight: bold; }
+.bolder              { font-weight: bolder; }
+.lighter             { font-weight: lighter; }
+
+// Alignment
+.text-left           { text-align: left; }
+.text-right          { text-align: right; }
+.text-center         { text-align: center; }
+.text-justify        { text-align: justify; }
+.text-nowrap         { white-space: nowrap; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+
+// Text Color
+.text-primary        { color: $brand-primary; }
+.text-info           { color: $brand-info; }
+.text-success        { color: $brand-success; }
+.text-warning        { color: $brand-warning; }
+.text-danger         { color: $brand-danger; }
+
+// Font Color
+.text-black          { color: black; }
+.text-brown          { color: brown; }
+.text-purple         { color: purple; }
+.text-violet         { color: violet; }
+.text-pink           { color: pink; }
+.text-blue           { color: blue; }
+.text-skyblue        { color: skyblue; }
+.text-green          { color: green; }
+.text-red            { color: red; }
+.text-orange         { color: orange; }
+.text-yellow         { color: yellow; }
+.text-grey           { color: grey; }
+.text-white          { color: white; }
+
+// Background Color
+.bg-black            { background-color: black; }
+.bg-brown            { background-color: brown; }
+.bg-purple           { background-color: purple; }
+.bg-violet           { background-color: violet; }
+.bg-pink             { background-color: pink; }
+.bg-blue             { background-color: blue; }
+.bg-skyblue          { background-color: skyblue; }
+.bg-green            { background-color: green; }
+.bg-red              { background-color: red; }
+.bg-orange           { background-color: orange; }
+.bg-yellow           { background-color: yellow; }
+.bg-grey             { background-color: grey; }
+.bg-white            { background-color: white; }
