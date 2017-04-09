@@ -4,21 +4,9 @@
 
 ท่านสามารถอ่านรายละเอียดวิธีการใช้งานได้ [ที่นี่](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
 
-## Table of Contents
+## Demo
 
-- [Slack](#slack)
-- [Quick Start](#quick-start)
-- [Folder Structure](#folder-structure)
-- [Available Scripts](#available-scripts)
-  - [npm start](#npm-start)
-  - [npm test](#npm-test)
-  - [npm test:full](#npm-test-full)
-  - [npm run build](#npm-run-deploy)
-  - [npm run help](#npm-run-help)
-  - [npm run make:core `<name>`](#npm-run-make-core)
-  - [npm run make:page `<name>`](#npm-run-make-page)
-  - [npm run make:component `<name>`](#npm-run-make-component)
-  - [npm run make:container `<name>`](#npm-run-make-container)
+ตัวอย่างเว็บไซต์<br>[https://scale360-react-starter-kit.firebaseapp.com](https://scale360-react-starter-kit.firebaseapp.com)
 
 ## Slack
 
@@ -47,6 +35,45 @@ $ npm install
 $ npm start
 ```
 
+## Deploying to Firebase
+#### Prerequisites:
+- สร้าง Firebase Account ได้ที่ [https://firebase.google.com](https://firebase.google.com)
+- สร้าง Project Firebase ของคุณที่ [Firebase account console](https://console.firebase.google.com)
+
+#### Configure this app with your project-specific details:
+```javascript
+// .firebaserc
+
+{
+  "projects": {
+    "default": "your-project-id"
+  }
+}
+```
+```javascript
+// src/core/firebase.js
+
+export const firebaseConfig = {
+  apiKey: 'your api key',
+  authDomain: 'your-project-id.firebaseapp.com',
+  databaseURL: 'https://your-project-id.firebaseio.com',
+  storageBucket: 'your-project-id.appspot.com'
+};
+```
+
+#### Install firebase-tools:
+```shell
+$ npm install -g firebase-tools
+```
+
+#### Build and deploy the app:
+```shell
+$ npm run build
+$ firebase login
+$ firebase use default
+$ firebase deploy
+```
+
 ## Folder Structure
 
 โครงสร้างไฟล์ทั้งหมด
@@ -64,14 +91,12 @@ src/
   core/
     task/
       test/
-        taskActions.test.js
-        taskReducer.test.js
-        taskSelector.test.js
       index.js
       taskActions.js
       taskReducer.js
       taskSelector.js
     constants.js
+    firebase.js
     rootReducers.js
     store.js
   utils/
@@ -87,16 +112,21 @@ src/
       scale360.scss
     routes.js
   index.js
-  setupTests.js
-  test/
+  tests/
 command.sh
+database.rules.json
+firebase.json
+.firebaserc
+firebase.rules.json
+.gitignore
+LICENSE
 package.json
 README.md
 ```
 
 ## Available Scripts
 
-ภายใน Project Directory, สามารถ Run คำสั่งดังต่อไปนี้ได้
+ภายใน Project Directory สามารถ Run คำสั่งดังต่อไปนี้ได้
 
 ### `npm start`
 

@@ -28,6 +28,7 @@ class Task extends React.Component {
   }
 
   saveTitle(event) {
+    event.preventDefault()
     if (this.state.editing) {
       const { task } = this.props;
       const title = this.state.title
@@ -60,17 +61,19 @@ class Task extends React.Component {
 
   renderTitleInput(task) {
     return (
-      <input
-        autoComplete="off"
-        autoFocus
-        className="task-item__input"
-        defaultValue={task.title}
-        maxLength="64"
-        onBlur={(e) => this.saveTitle(e)}
-        onKeyUp={(e) => this.onKeyUp(e)}
-        ref={c => this.titleInput = c}
-        type="text"
-      />
+      <form onSubmit={(e) => this.saveTitle(e)}>
+        <input
+          autoComplete="off"
+          autoFocus
+          className="task-item__input"
+          defaultValue={task.title}
+          maxLength="64"
+          onBlur={(e) => this.saveTitle(e)}
+          onKeyUp={(e) => this.onKeyUp(e)}
+          ref={c => this.titleInput = c}
+          type="text"
+        />
+      </form>
     );
   }
 

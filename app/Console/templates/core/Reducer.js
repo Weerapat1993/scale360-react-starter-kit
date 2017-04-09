@@ -9,11 +9,6 @@ export const ${name}Reducer = (state = initialState, action) => {
     // FETCH_${name_upper}.SUCCESS: ================================
     case ${name_upper}.FETCH.SUCCESS:
       return action.payload
-    // FETCH_${name_upper}.FAILURE: ================================
-    case ${name_upper}.FETCH.FAILURE:
-      console.error(${name_upper}.FETCH.FAILURE)
-      console.error(action.payload);
-      return state
     // CREATE_${name_upper}: ================================
     case ${name_upper}.CREATE:
       return createData(state,action)

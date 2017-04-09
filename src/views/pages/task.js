@@ -39,16 +39,16 @@ class Task extends Component {
           updateTask={(data) => this.updateTask(data)}
           deleteTask={(key) => this.deleteTask(key)}
         />
-      ))
+    ))
     return (
       <div className="g-row">
         <div className="g-col">
           <TaskForm createTask={(title) => this.createTask(title)} />
         </div>
         <div className="g-col">
-          <TaskFilters />
+          <TaskFilters filter={this.props.location.query.filter} />
           <div className="task-list">
-            { (loading) ? data : <div className="loader"></div> }
+            { (!loading) ? data : <div className="loader"></div> }
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@ class Task extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   tasks: getTaskFilter(state,ownProps),
-  loading: state.loading
+  loading: state.loading.taskLoading
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
