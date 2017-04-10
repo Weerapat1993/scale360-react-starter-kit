@@ -41,14 +41,21 @@ class Task extends Component {
         />
     ))
     return (
-      <div className="g-row">
-        <div className="g-col">
-          <TaskForm createTask={(title) => this.createTask(title)} />
+      <div className="card">
+        <div className="card-header">
+          Task Lists
         </div>
-        <div className="g-col">
-          <TaskFilters filter={this.props.location.query.filter} />
-          <div className="task-list">
-            { (!loading) ? data : <div className="loader"></div> }
+        <div className="card-body">
+          <div className="g-row">
+            <div className="g-col">
+              <TaskForm createTask={(title) => this.createTask(title)} />
+            </div>
+            <div className="g-col">
+              <TaskFilters filter={this.props.location.query.filter} />
+              <div className="task-list">
+                { (!loading) ? data : <div className="loader"></div> }
+              </div>
+            </div>
           </div>
         </div>
       </div>

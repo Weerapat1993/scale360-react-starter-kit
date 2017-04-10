@@ -33,7 +33,7 @@
     text-decoration: none;
 
     &.active {
-      color: #fff;
+      color: black;
     }
   }
 }
@@ -62,7 +62,7 @@
   font-family: inherit;
   font-size: rem(24px);
   font-weight: 300;
-  color: #fff;
+  color: #000;
   background: transparent;
 
   @include media-query(540) {
@@ -99,7 +99,7 @@
   border-bottom: 1px dotted #666;
   height: 60px;
   overflow: hidden;
-  color: #fff;
+  color: purple;
   font-size: rem(18px);
   font-weight: 300;
 
@@ -145,7 +145,7 @@
   padding: 3px 0 0 0;
   width: 40px;
   height: 40px;
-  background: #2a2a2a;
+  background: #eeeeee;
 
   &:first-child {
     margin: 0;
@@ -153,11 +153,11 @@
 }
 
 .icon {
-  fill: #555;
+  fill: #333;
   transform: translate(0, 0);
 
   .task-item__button:hover & {
-    fill: #999;
+    fill: #666;
   }
 }
 

@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
 
-class Home extends Component {
+class About extends Component {
   render () {
     return (
       <div className="card">
         <div className="card-header">
-          Task Lists
+          About
         </div>
         <div className="card-body">
-          <Link to="/task" className="b">Task</Link>
+          About
         </div>
       </div>
     )
   }
 }
 
-export default Home;
+export default About;

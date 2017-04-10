@@ -1,18 +1,21 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-// import { apiMiddleware } from 'redux-api-middleware'
+import { apiMiddleware } from 'redux-api-middleware'
 // import createLogger from 'redux-logger'
 import rootReducers from './rootReducers'
 
-const middlewares = [thunk]
+const middlewares = [thunk, apiMiddleware]
 // if(process.env.NODE_ENV !== 'production') middlewares.push(createLogger)
 
-const store = createStore(
-  rootReducers,
-  composeWithDevTools(
-    applyMiddleware(...middlewares)
-  )
-);
+const storeEnhancer = [
+	composeWithDevTools(
+		applyMiddleware(...middlewares)
+	)
+]
 
-export default store;
+const finalCreateStore = compose(...storeEnhancer)(createStore)
+
+export default function configureStore(initialState) {
+  return finalCreateStore(rootReducers, initialState)
+}

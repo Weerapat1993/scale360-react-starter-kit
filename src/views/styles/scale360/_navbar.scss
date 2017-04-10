@@ -1,0 +1,108 @@
+nav {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: $navbar_background;
+  border-bottom: 1px solid $navbar_background_hover;
+  width: 100%;
+
+  .navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    .nav-brand {
+      float: left;
+      padding: 0 10px;
+      img {
+    		max-height: 40px;
+      }
+      span {
+        float: right;
+        padding: 12px 5px;
+
+        display: inline;
+        text-align: center;
+  	    text-decoration: none;
+        font-size: 13px;
+        color: $navbar_font_color;
+      }
+    }
+  	li {
+  	    float: right;
+        border-left: 1px solid $navbar_background_hover;
+  		a {
+  			display: block;
+  	    color: $navbar_font_color;
+  	    text-align: center;
+  	    text-decoration: none;
+  			&.font {
+  				padding: 10px 15px;
+          font-size: 10px;
+  			}
+        i {
+          padding: 10px 0px;
+          font-size: 18px !important;
+          line-height: 0px;
+          color: $navbar_font_color;
+        }
+
+  			&.profile {
+  				padding: 0px 10px;
+  				.profile-name {
+            @media (max-width: $tablet_width) {
+              position: absolute;
+              width: 1px;
+              height: 1px;
+              padding: 0;
+              margin: -1px;
+              overflow: hidden;
+              clip: rect(0,0,0,0);
+              border: 0;
+            }
+  					float: right;
+            font-size: 13px;
+            padding: 12px 5px;
+  				}
+  				.profile-img {
+  					max-width: 25px;
+  					margin: 7px 2px;
+  					border: 2px solid #34ae89;
+  					float: left;
+            border-radius: 50%;
+  				}
+  			}
+
+  			&:hover:not(.active) {
+  		    background-color: $navbar_background_hover;
+  			}
+        span {
+          position:relative;
+          &.badge {
+            position:absolute;
+            top: 5px;
+            right: 5px;
+            font-size:.5em;
+            background: #34ae89;
+            color: $navbar_font_color;
+            width:15px;height:15px;
+            text-align:center;
+            line-height:15px;
+            border-radius:50%;
+          }
+        }
+  		}
+  		.active {
+  		    background-color: $navbar_background_hover;
+  		}
+
+  	}
+  }
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    height: 40px;
+    width: 100%;
+  }
+}

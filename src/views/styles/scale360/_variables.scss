@@ -1,14 +1,37 @@
-
 //=========================================================
 //  Settings
 //---------------------------------------------------------
 
-$base-background-color: #222 !default;
-$base-font-color: #999 !default;
+$base-background-color: #ffeedd !default;
+$base-font-color: #464646 !default;
 $base-font-family: 'aktiv-grotesk-std', Helvetica Neue, Arial, sans-serif !default;
 $base-font-size: 18px !default;
 $base-line-height: 24px !default;
 
+//=========================================================
+//  Navbar
+//---------------------------------------------------------
+
+$navbar_background: #ffffff;
+$navbar_background_hover: #ffc107;
+$navbar_background_active: #f47822;
+$navbar_font_color: #222;
+$navbar_border: #dfe6ec;
+$navbar_height: 40px;
+
+//=========================================================
+//  Card
+//---------------------------------------------------------
+
+$card_header_background: #f47822;
+$card_header_font_color: #fff;
+
+//=========================================================
+//  Platform
+//---------------------------------------------------------
+
+$tablet_width: 767px;
+$mobile_width: 480px;
 
 //=====================================
 //  Grid

@@ -1,0 +1,21 @@
+.sidebar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+
+  li {
+    display: block;
+    a {
+      padding:10px;
+      display: block;
+      width: 100%;
+
+      &.active {
+        display: block;
+        width: 100%;
+        background-color: $navbar_background_hover;
+      }
+    }
+  }
+}
