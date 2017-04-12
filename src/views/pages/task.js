@@ -51,7 +51,7 @@ class Task extends Component {
               <TaskForm createTask={(title) => this.createTask(title)} />
             </div>
             <div className="g-col">
-              <TaskFilters filter={this.props.location.query.filter} />
+              <TaskFilters search={this.props.location.search} />
               <div className="task-list">
                 { (!loading) ? data : <div className="loader"></div> }
               </div>

@@ -1,8 +1,15 @@
 import { API, TASK } from '../constants'
-import { getFetchApi, createActions, updateActions, deleteActions } from '../../utils/callActions'
+import { getFetchApi, payloadActions } from '../../utils/callActions'
 import { taskLoading } from '../loading/loadingActions'
 
-export const fetchTask = () => (getFetchApi(API.TASK, TASK.FETCH, taskLoading))
-export const createTask = (data) => (createActions(TASK.CREATE, data, taskLoading))
-export const updateTask = (data) => (updateActions(TASK.UPDATE, data, taskLoading))
-export const deleteTask = (key) => (deleteActions(TASK.DELETE, key, taskLoading))
+// SUCCESS
+export const fetchTaskSuccess = (payload, type) => ({ payload, type })
+export const createTaskSuccess = (payload, type) => ({ payload, type })
+export const updateTaskSuccess = (payload, type) => ({ payload, type })
+export const deleteTaskSuccess = (payload, type) => ({ payload, type })
+
+// REQUEST
+export const fetchTask = () => (getFetchApi(API.TASK, TASK.FETCH, fetchTaskSuccess, taskLoading))
+export const createTask = (payload) => (payloadActions(TASK.CREATE, createTaskSuccess, payload, taskLoading))
+export const updateTask = (payload) => (payloadActions(TASK.UPDATE, updateTaskSuccess, payload, taskLoading))
+export const deleteTask = (payload) => (payloadActions(TASK.DELETE, deleteTaskSuccess, payload, taskLoading))

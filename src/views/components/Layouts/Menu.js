@@ -13,7 +13,7 @@ class Menu extends Component {
             <Sidebar />
           </div>
         </div>
-        <div className="card">
+        <div className="card"> 
           <div className="card-header">
             <i className="fa fa-bar-chart"></i> Statistic
           </div>

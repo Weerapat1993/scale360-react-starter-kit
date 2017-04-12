@@ -1,7 +1,7 @@
 import { CALL_API } from 'redux-api-middleware'
 
 // Actions
-export const getApiMiddleware = (API, ACTION_TYPE, loading) => (dispatch, getState) => {
+export const getApiMiddleware = (API, ACTION_TYPE, Action, loading) => (dispatch, getState) => {
   dispatch(loading(true))
   dispatch({
     [CALL_API]: {
@@ -30,51 +30,36 @@ export const getApiMiddleware = (API, ACTION_TYPE, loading) => (dispatch, getSta
   })
 }
 
-export const getFetchApi = (API, ACTION_TYPE, loading) => (dispatch, getState) => {
+/**
+ * GET Fetch API Data
+ * @param {string} API
+ * @param {string} ACTION_TYPE 
+ * @param {function} Action 
+ * @param {function} loading 
+ */
+export const getFetchApi = (API, ACTION_TYPE, Action, loading) => (dispatch, getState) => {
   dispatch(loading(true))
   fetch(API)
     .then(res => res.json())
     .then(res => {
-      dispatch({
-        type: ACTION_TYPE.SUCCESS,
-        payload: res
-      })
+      dispatch(Action(res, ACTION_TYPE.SUCCESS))
       dispatch(loading(false))
     })
     .catch(err => {
-      console.error(ACTION_TYPE.FAILURE);
-      console.error(err);
-      dispatch({
-        type: ACTION_TYPE.FAILURE,
-        payload: err
-      })
+      console.error(ACTION_TYPE.FAILURE, err);
       dispatch(loading(false))
     })
 }
 
-export const createActions = (ACTION_TYPE, data, loading) => (dispatch, getState) => {
+/**
+ * Payload Actions
+ * @param {string} ACTION_TYPE 
+ * @param {function} Action
+ * @param {*} payload 
+ * @param {function} loading 
+ */
+export const payloadActions = (ACTION_TYPE, Action, payload, loading) => (dispatch, getState) => {
   dispatch(loading(true))
-  dispatch({
-    type: ACTION_TYPE,
-    data
-  })
-  dispatch(loading(false))
-}
-
-export const updateActions = (ACTION_TYPE, data, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
-  dispatch({
-    type: ACTION_TYPE,
-    data
-  })
-  dispatch(loading(false))
-}
-
-export const deleteActions = (ACTION_TYPE, key, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
-  dispatch({
-    type: ACTION_TYPE,
-    key
-  })
+  dispatch(Action(payload, ACTION_TYPE.SUCCESS))
   dispatch(loading(false))
 }

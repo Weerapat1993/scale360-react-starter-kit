@@ -50,14 +50,14 @@ then
   fi
 
   # File Tests #
-#  tests=( Actions Reducer Selector )
-#  for test in "${tests[@]}"
-#  do
-#    if ! [ -e "./src/core/${CORE}/tests/${CORE}${test}.test.js" ]
-#    then
-#      sh ./app/Console/build.sh ./app/Console/templates/core/tests/${test}.js ./src/core/${CORE}/tests/${CORE}${test}.test.js
-#    fi
-#  done
+  tests=( Actions Reducer Selector )
+  for test in "${tests[@]}"
+  do
+    if ! [ -e "./src/core/${CORE}/tests/${CORE}${test}.test.js" ]
+    then
+      sh ./app/Console/build.sh ./app/Console/templates/core/tests/${test}.js ./src/core/${CORE}/tests/${CORE}${test}.test.js
+    fi
+  done
 
 
   if [ $CHECK -eq 0 ]
@@ -67,12 +67,5 @@ then
     echo "\n - Please setting config in ${green}rootReducers.js\n"
     echo "\timport { ${CORE}Reducer } from './${CORE}'\n"
     echo "\t${CORE}: ${CORE}Reducer,${reset}"
-#    echo "\n - Please setting config in ${green}constants.js\n${reset}"
-#    echo "export const ${name_upper} = {"
-#    echo "  FETCH: asyncActionType('FETCH_${name_upper}'),"
-#    echo "  CREATE: 'CREATE_${name_upper}',"
-#    echo "  UPDATE: 'UPDATE_${name_upper}',"
-#    echo "  DELETE: 'DELETE_${name_upper}',"
-#    echo "}\n"
   fi
 fi
