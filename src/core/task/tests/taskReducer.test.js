@@ -1,28 +1,28 @@
-// import { ${name_upper} } from '../../constants';
-import { ${name_upper} } from '../${name}ActionTypes';
-import { ${name}Reducer } from '../${name}Reducer'
+// import { TASK } from '../../constants';
+import { TASK } from '../taskActionTypes';
+import { taskReducer } from '../taskReducer'
 import { fetchData, createData, updateData, deleteData } from '../../../utils/callReducer'
 
 const initialState = [
   {
     key: 1,
-    title: '${name_pascal} 101',
+    title: 'Task 101',
     completed: true
   }
 ]
 
 const payload = {
   fetch: initialState,
-  create: { key: 2, title: '${name_pascal} 102', completed: false },
-  update: { key: 1, title: '${name_pascal} 101', completed: true },
+  create: { key: 2, title: 'Task 102', completed: false },
+  update: { key: 1, title: 'Task 101', completed: true },
   delete: 1
 }
 
 const actionTypeName = [
-  ${name_upper}.FETCH.SUCCESS,
-  ${name_upper}.CREATE.SUCCESS,
-  ${name_upper}.UPDATE.SUCCESS,
-  ${name_upper}.DELETE.SUCCESS,
+  TASK.FETCH.SUCCESS,
+  TASK.CREATE.SUCCESS,
+  TASK.UPDATE.SUCCESS,
+  TASK.DELETE.SUCCESS,
 ]
 
 const expected_array = [
@@ -34,14 +34,14 @@ const expected_array = [
 
 const type = ['fetch','create','update','delete']
 
-describe('${name_pascal} Reducers', () => {
+describe('Task Reducers', () => {
   for (let i = 0; i < actionTypeName.length; i++) {
-    it('should ${name_pascal} Reducer : '+actionTypeName[i], () => {
+    it('should Task Reducer : '+actionTypeName[i], () => {
       const action = {
         type: actionTypeName[i],
         payload: payload[type[i]]
       }
-      const recieved = ${name}Reducer(initialState, action)
+      const recieved = taskReducer(initialState, action)
       const expected = expected_array[i](initialState, action)
       expect(expected).toEqual(recieved);
     });

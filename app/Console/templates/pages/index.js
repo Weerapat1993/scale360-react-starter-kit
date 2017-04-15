@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { ${name}Actions, get${name_pascal}Filter } from '../../core/${name}';
 
+import Layout from '../app/Layout'
 import InputTemplate from '../components/utils/input-template'
 
 class ${name_pascal} extends Component {
@@ -34,16 +36,18 @@ class ${name_pascal} extends Component {
       <li key={i}>{item.title}</li>
     ))
     return (
-      <div>
-        <InputTemplate
-          className=\"task-form__input\"
-          placeholder=\"${name}\"
-          handleSubmit={(title) => this.createTodo(title)}
-        />
-        <ul>
-          {data}
-        </ul>
-      </div>
+      <Switch>
+        <Layout>
+          <InputTemplate
+            className=\"task-form__input\"
+            placeholder=\"${name}\"
+            handleSubmit={(title) => this.createTodo(title)}
+          />
+          <ul>
+            {data}
+          </ul>
+        </Layout>
+      </Switch>
 
     )
   }

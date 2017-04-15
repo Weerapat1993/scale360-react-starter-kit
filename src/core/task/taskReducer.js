@@ -1,5 +1,6 @@
-import { createData, updateData, deleteData } from '../../utils/callReducer'
-import { TASK } from '../constants'
+import { fetchData, createData, updateData, deleteData } from '../../utils/callReducer'
+// import { TASK } from '../constants'
+import { TASK } from './taskActionTypes'
 
 const initialState = [];
 
@@ -7,7 +8,7 @@ export const taskReducer = (state = initialState, action) => {
   switch (action.type) {
     // FETCH_TASK_SUCCESS: ================================
     case TASK.FETCH.SUCCESS:
-      return action.payload
+      return fetchData(state,action)
     // CREATE_TASK_SUCCESS: ================================
     case TASK.CREATE.SUCCESS:
       return createData(state,action)

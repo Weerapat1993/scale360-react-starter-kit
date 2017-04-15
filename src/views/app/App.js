@@ -10,6 +10,7 @@ export default class App extends Component {
     this.state = {
       authed: false,
       loading: true,
+      email: ''
     }
   }
   componentDidMount () {
@@ -18,11 +19,13 @@ export default class App extends Component {
         this.setState({
           authed: true,
           loading: false,
+          email: user.email
         })
       } else {
         this.setState({
           authed: false,
-          loading: false
+          loading: false,
+          email: null
         })
       }
     })
@@ -31,6 +34,6 @@ export default class App extends Component {
     this.removeListener()
   }
   render() {
-    return (this.state.loading) ? <Loading /> : <Routes authed={this.state.authed} />
+    return (this.state.loading) ? <Loading /> : <Routes authed={this.state.authed} email={this.state.email} />
   }
 }

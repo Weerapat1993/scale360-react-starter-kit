@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import { Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { taskActions, getTaskFilter } from '../../core/task';
 
+import Layout from '../app/Layout'
 import TaskFilters from '../components/task/task-filters'
 import TaskItem from '../components/task/task-item'
 import TaskForm from '../components/task/task-form'
+
 
 class Task extends Component {
   componentDidMount() {
@@ -41,24 +44,28 @@ class Task extends Component {
         />
     ))
     return (
-      <div className="card">
-        <div className="card-header">
-          Task Lists
-        </div>
-        <div className="card-body">
-          <div className="g-row">
-            <div className="g-col">
-              <TaskForm createTask={(title) => this.createTask(title)} />
+      <Switch>
+        <Layout>
+          <div className="card">
+            <div className="card-header">
+              Task Lists
             </div>
-            <div className="g-col">
-              <TaskFilters search={this.props.location.search} />
-              <div className="task-list">
-                { (!loading) ? data : <div className="loader"></div> }
+            <div className="card-body">
+              <div className="g-row">
+                <div className="g-col">
+                  <TaskForm createTask={(title) => this.createTask(title)} />
+                </div>
+                <div className="g-col">
+                  <TaskFilters search={this.props.location.search} />
+                  <div className="task-list">
+                    { (!loading) ? data : <div className="loader"></div> }
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </Layout>
+      </Switch>
     )
   }
 }

@@ -8,27 +8,24 @@ import './styles/bootstrap/app.scss'
 // import './styles/scale360.scss'
 
 // Import All Components
-import Layout from './app/Layout';
+import Error404 from './app/errors/404';
 import Home from './pages/home';
 import Task from './pages/task';
 import About from './pages/about';
 import Login from './pages/auth/login';
 import Register from './pages/auth/register';
 
-export function Routes({ authed }) {
+export function Routes({ authed, email }) {
   return (
     <BrowserRouter>
-      <Layout authed={authed}>
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/about' exact component={About} />
-          <PublicRoute authed={authed} path='/home' component={Home} />
-          <PublicRoute authed={authed} path='/login' component={Login} />
-          <PublicRoute authed={authed} path='/register' component={Register} />
-          <PrivateRoute authed={authed} path='/task' component={Task} />
-          <Route render={() => <h3>No Match</h3>} />
-        </Switch>
-      </Layout>
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/about' component={About} />
+        <PublicRoute authed={authed} path='/login' component={Login} />
+        <PublicRoute authed={authed} path='/register' component={Register} />
+        <PrivateRoute authed={authed} path='/task' component={Task} />
+        <Route path='*' component={Error404} />
+      </Switch>
     </BrowserRouter>
   )
 }

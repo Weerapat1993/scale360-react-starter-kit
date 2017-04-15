@@ -1,7 +1,16 @@
 /**
+ * FETCH API DATA
+ * @param {*} state
+ * @param {*} action
+ */
+export function fetchData(state,action) {
+  return action.payload
+}
+
+/**
  * Create new data
- * @param {*} state 
- * @param {*} action 
+ * @param {*} state
+ * @param {*} action
  */
 export function createData(state,action) {
   return [
@@ -12,8 +21,8 @@ export function createData(state,action) {
 
 /**
  * Update Data (item.key)
- * @param {*} state 
- * @param {*} action 
+ * @param {*} state
+ * @param {*} action
  */
 export function updateData(state,action) {
   let news = state.filter((item) => action.payload.key === item.key)
@@ -29,8 +38,8 @@ export function updateData(state,action) {
 
 /**
  * Remove Data (item.key)
- * @param {*} state 
- * @param {*} action 
+ * @param {*} state
+ * @param {*} action
  */
 export function deleteData(state,action) {
   return state.filter((item) => action.payload !== item.key)

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 class RouterLink extends React.Component {
   render() {
-    const { to, active, children, handleClick } = this.props
+    const { to, location, children, handleClick } = this.props
     return (
-      <li className={(active) ? 'active' : ''}>
+      <li className={(location.pathname === to) ? 'active' : ''}>
         {
           (handleClick) ?
           <a href="#" onClick={handleClick}>

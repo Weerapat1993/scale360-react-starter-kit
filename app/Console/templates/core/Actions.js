@@ -1,5 +1,5 @@
 import { API } from '../constants'
-import { getFetchApi, createActions, updateActions, deleteActions } from '../../utils/callActions'
+import { getFetchApi, payloadActions } from '../../utils/callActions'
 import { ${name}Loading } from '../loading/loadingActions'
 import { ${name_upper} } from './${name}ActionTypes'
 

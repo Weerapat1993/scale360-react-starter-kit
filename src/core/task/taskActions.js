@@ -1,6 +1,7 @@
-import { API, TASK } from '../constants'
+import { API } from '../constants'
 import { getFetchApi, payloadActions } from '../../utils/callActions'
 import { taskLoading } from '../loading/loadingActions'
+import { TASK } from './taskActionTypes'
 
 // SUCCESS
 export const fetchTaskSuccess = (payload, type) => ({ payload, type })

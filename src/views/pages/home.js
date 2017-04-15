@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Switch } from 'react-router-dom'
+import Layout from '../app/Layout'
 
 class Home extends Component {
   render () {
     return (
-      <div className="card">
-        <div className="card-header">
-          Task Lists
-        </div>
-        <div className="card-body">
-          <Link to="/task" className="b">Task</Link>
-        </div>
-      </div>
+      <Switch>
+        <Layout>
+          <div className="card">
+            <div className="card-header">
+              Task Lists
+            </div>
+            <div className="card-body">
+              <Link to="/task" className="b">Task</Link>
+            </div>
+          </div>
+        </Layout>
+      </Switch>
     )
   }
 }
 
-export default Home;
+export default Home

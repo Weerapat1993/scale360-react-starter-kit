@@ -1,16 +1,16 @@
 import queryString from 'query-string'
-import { get${name_pascal}Filter } from '../${name}Selector'
+import { getTaskFilter } from '../taskSelector'
 
 const initialState = {
-  ${name}: [
+  task: [
     {
       key: 1,
-      title: '${name_pascal} 101',
+      title: 'Task 101',
       completed: true
     },
     {
       key: 2,
-      title: '${name_pascal} 102',
+      title: 'Task 102',
       completed: false
     }
   ]
@@ -19,15 +19,15 @@ const initialState = {
 // Filter Data
 const search = ['','active','completed']
 
-describe('${name_pascal} Selector', () => {
+describe('Task Selector', () => {
   for (let i = 0; i < search.length; i++) {
-    it('should ${name_pascal} Selector Filter : ' + search[i], () => {
+    it('should Task Selector Filter : ' + search[i], () => {
       const props = {
         location: {
           search: search[i]
         }
       }
-      const recieved = get${name_pascal}Filter(initialState, props)
+      const recieved = getTaskFilter(initialState, props)
       const expected = getFilterData(initialState, props)
 
       expect(expected).toEqual(recieved);
@@ -37,16 +37,16 @@ describe('${name_pascal} Selector', () => {
 
 // Function Filter Data
 function getFilterData(state, props) {
-  const ${name} = state.${name}
+  const task = state.task
   const { filter } = queryString.parse(props.location.search)
   switch (filter) {
     case 'active':
-      return ${name}.filter(item => !item.completed);
+      return task.filter(item => !item.completed);
 
     case 'completed':
-      return ${name}.filter(item => item.completed);
+      return task.filter(item => item.completed);
 
     default:
-      return ${name};
+      return task;
   }
 }

@@ -11,7 +11,7 @@ import {
 
 class NavbarHeader extends React.Component {
   render () {
-    const { authed } = this.props
+    const { authed, email, location } = this.props
     return (
       <Navbar>
         <Navbar.Header>
@@ -22,25 +22,22 @@ class NavbarHeader extends React.Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <RouterLink to="/" active>Home</RouterLink>
-            <RouterLink to="/about">About</RouterLink>
+            <RouterLink to="/" location={location}>Home</RouterLink>
+            <RouterLink to="/about" location={location}>About</RouterLink>
             {
-              authed ? <RouterLink to="/task">Task</RouterLink> : ''
+              authed ? <RouterLink to="/task" location={location}>Task</RouterLink> : ''
             }
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.4}>Separated link</MenuItem>
-            </NavDropdown>
           </Nav>
           {
             !authed ? <Nav pullRight>
-              <RouterLink to="/login">Login</RouterLink>
-              <RouterLink to="/register">Register</RouterLink>
+              <RouterLink to="/login" location={location}>Login</RouterLink>
+              <RouterLink to="/register" location={location}>Register</RouterLink>
             </Nav> : <Nav pullRight>
-              <RouterLink handleClick={() => logout()}>Logout</RouterLink>
+              <NavDropdown eventKey={1} title={email} id="basic-nav-dropdown">
+                <RouterLink to="/profile" location={location}>Profile</RouterLink>
+                <MenuItem divider />
+                <RouterLink handleClick={() => logout()} location={location}>Logout</RouterLink>
+              </NavDropdown>
             </Nav>
           }
         </Navbar.Collapse>
