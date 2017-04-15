@@ -1,6 +1,5 @@
 import { API } from '../constants'
 import { getFetchApi, payloadActions } from '../../utils/callActions'
-import { taskLoading } from '../loading/loadingActions'
 import { TASK } from './taskActionTypes'
 
 // SUCCESS
@@ -10,7 +9,7 @@ export const updateTaskSuccess = (payload, type) => ({ payload, type })
 export const deleteTaskSuccess = (payload, type) => ({ payload, type })
 
 // REQUEST
-export const fetchTask = () => (getFetchApi(API.TASK, TASK.FETCH, fetchTaskSuccess, taskLoading))
-export const createTask = (payload) => (payloadActions(TASK.CREATE, createTaskSuccess, payload, taskLoading))
-export const updateTask = (payload) => (payloadActions(TASK.UPDATE, updateTaskSuccess, payload, taskLoading))
-export const deleteTask = (payload) => (payloadActions(TASK.DELETE, deleteTaskSuccess, payload, taskLoading))
+export const fetchTask = () => (getFetchApi(API.TASK, TASK.FETCH, fetchTaskSuccess, 'taskLoading'))
+export const createTask = (payload) => (payloadActions(TASK.CREATE, createTaskSuccess, payload, 'taskLoading'))
+export const updateTask = (payload) => (payloadActions(TASK.UPDATE, updateTaskSuccess, payload, 'taskLoading'))
+export const deleteTask = (payload) => (payloadActions(TASK.DELETE, deleteTaskSuccess, payload, 'taskLoading'))

@@ -1,8 +1,9 @@
 import { CALL_API } from 'redux-api-middleware'
+import { allLoading } from '../core/loading/loadingActions'
 
 // Actions
 export const getApiMiddleware = (API, ACTION_TYPE, Action, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
+  dispatch(allLoading(loading, true))
   dispatch({
     [CALL_API]: {
       endpoint: API,
@@ -12,7 +13,7 @@ export const getApiMiddleware = (API, ACTION_TYPE, Action, loading) => (dispatch
         {
           type: ACTION_TYPE.SUCCESS,
           payload: (action, state, res) => {
-            dispatch(loading(false))
+            dispatch(allLoading(loading, false))
             return res.json()
           }
         },
@@ -21,7 +22,7 @@ export const getApiMiddleware = (API, ACTION_TYPE, Action, loading) => (dispatch
           payload: (action, state, res) => {
             console.error(ACTION_TYPE.FAILURE);
             console.error(res);
-            dispatch(loading(false))
+            dispatch(allLoading(loading, false))
             return res.json()
           }
         }
@@ -33,33 +34,33 @@ export const getApiMiddleware = (API, ACTION_TYPE, Action, loading) => (dispatch
 /**
  * GET Fetch API Data
  * @param {string} API
- * @param {string} ACTION_TYPE 
- * @param {function} Action 
- * @param {function} loading 
+ * @param {string} ACTION_TYPE
+ * @param {function} Action
+ * @param {string} loading
  */
 export const getFetchApi = (API, ACTION_TYPE, Action, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
+  dispatch(allLoading(loading, true))
   fetch(API)
     .then(res => res.json())
     .then(res => {
       dispatch(Action(res, ACTION_TYPE.SUCCESS))
-      dispatch(loading(false))
+      dispatch(allLoading(loading, false))
     })
     .catch(err => {
       console.error(ACTION_TYPE.FAILURE, err);
-      dispatch(loading(false))
+      dispatch(allLoading(loading, false))
     })
 }
 
 /**
  * Payload Actions
- * @param {string} ACTION_TYPE 
+ * @param {string} ACTION_TYPE
  * @param {function} Action
- * @param {*} payload 
- * @param {function} loading 
+ * @param {*} payload
+ * @param {string} loading
  */
 export const payloadActions = (ACTION_TYPE, Action, payload, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
+  dispatch(allLoading(loading, true))
   dispatch(Action(payload, ACTION_TYPE.SUCCESS))
-  dispatch(loading(false))
+  dispatch(allLoading(loading, false))
 }

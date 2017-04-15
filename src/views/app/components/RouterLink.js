@@ -8,7 +8,7 @@ class RouterLink extends React.Component {
       <li className={(location.pathname === to) ? 'active' : ''}>
         {
           (handleClick) ?
-          <a href="#" onClick={handleClick}>
+          <a href="/" onClick={handleClick}>
             {children}
           </a> :
           <Link to={to}>

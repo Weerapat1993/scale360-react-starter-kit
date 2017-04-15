@@ -18,9 +18,6 @@ export const API = {
 //  ACTION_TYPE
 //-------------------------------------
 
-// Loading
-export const TASK_LOADING = 'TASK_LOADING'
-
 export const TASK = {
   FETCH: asyncActionType('FETCH_TASK'),
   CREATE: asyncActionType('CREATE_TASK'),

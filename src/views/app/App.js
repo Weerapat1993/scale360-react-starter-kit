@@ -1,39 +1,47 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { authActions } from '../../core/auth'
+import { loadingActions } from '../../core/loading'
 import { firebaseAuth } from '../../core/firebase'
-import { Routes } from '../routes'
+
 import Loading from './Loading'
+import { Routes } from '../routes'
 
-export default class App extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      authed: false,
-      loading: true,
-      email: ''
-    }
-  }
+class App extends Component {
   componentDidMount () {
-    this.removeListener = firebaseAuth.onAuthStateChanged((user) => {
+    // this.props.authActions.loginAuth()
+    firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
-        this.setState({
-          authed: true,
-          loading: false,
-          email: user.email
-        })
+        this.props.loadingActions.allLoading('authLoading', false)
+        this.props.authActions.loginAuthSuccess(user)
       } else {
-        this.setState({
-          authed: false,
-          loading: false,
-          email: null
-        })
+        this.props.loadingActions.allLoading('authLoading', false)
+        this.props.authActions.logoutAuthSuccess()
       }
     })
   }
-  componentWillUnmount () {
-    this.removeListener()
-  }
   render() {
-    return (this.state.loading) ? <Loading /> : <Routes authed={this.state.authed} email={this.state.email} />
+    const { authed, email } = this.props.auth
+    return (this.props.loading) ? <Loading /> : <Routes authed={authed} email={email} />
   }
 }
+
+//=====================================
+//  CONNECT
+//-------------------------------------
+
+const mapStateToProps = (state, ownProps) => ({
+  auth: state.auth,
+  loading: state.loading.authLoading,
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  authActions: bindActionCreators(authActions, dispatch),
+  loadingActions: bindActionCreators(loadingActions, dispatch)
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

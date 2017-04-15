@@ -1,6 +1,7 @@
-import { TASK_LOADING } from '../constants'
+const LOADING = 'LOADING'
 
-export const taskLoading = (bool) => ({
-    type: TASK_LOADING,
-    loading: bool
+export const allLoading = (loading, bool) => ({
+    type: LOADING,
+    loading,
+    bool
 })
