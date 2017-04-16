@@ -8,7 +8,7 @@ import Routes from './views/routes'
 import configureStore from './core/store'
 
 // Import All StyleSheet
-import './views/styles/css/font-awesome.css'
+import './views/styles/font-awesome/css/font-awesome.css'
 import './views/styles/scale360.scss'
 
 ReactDOM.render(

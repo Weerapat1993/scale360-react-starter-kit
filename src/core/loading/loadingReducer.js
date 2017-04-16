@@ -1,16 +1,17 @@
-import { TASK_LOADING } from '../constants'
+const LOADING = 'LOADING'
 
 const initialState = {
+  authLoading: true,
   taskLoading: true
 };
 
 export const loadingReducer = (state = initialState, action) => {
   switch (action.type) {
-    // TASK_LOADING: ================================
-    case TASK_LOADING:
+    // ALL_LOADING: ================================
+    case LOADING:
       return {
         ...state,
-        taskLoading: action.loading
+        [action.loading]: action.bool
       }
     default:
       return state
