@@ -23,5 +23,5 @@ else
   name_lower=$(echo $CORE | tr 'A-Z' 'a-z');
   name_pascal=$(echo $CORE | tr '[:lower:]' '[:upper:]' <<< ${CORE:0:1})${CORE:1};
   render_template $source > $destination
-  echo "${green} Create File ${destination} ${reset}";
+  echo "${green} create file${reset} ${destination}";
 fi

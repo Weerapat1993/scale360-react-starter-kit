@@ -90,7 +90,10 @@ public/
 src/
   core/
     task/
-      test/
+      tests/
+        taskActions.test.js
+        taskReducer.test.js
+        taskSelector.test.js
       index.js
       taskActions.js
       taskReducer.js
@@ -105,10 +108,9 @@ src/
     components/
     pages/
     styles/
+      bootstrap/
+      font-awesome/
       scale360/
-        mixins/
-        default.scss
-        mixins.scss
       scale360.scss
     routes.js
   index.js
@@ -184,6 +186,7 @@ src/
 +       todoSelector.test.js
 +     index.js
 +     todoActions.js
++     todoActionTypes.js
 +     todoReducer.js
 +     todoSelector.js
 ```

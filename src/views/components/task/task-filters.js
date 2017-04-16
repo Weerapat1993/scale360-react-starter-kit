@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
-
 
 function TaskFilters({filter}) {
   return (
@@ -12,9 +11,5 @@ function TaskFilters({filter}) {
     </ul>
   );
 }
-
-TaskFilters.propTypes = {
-  filter: PropTypes.string
-};
 
 export default TaskFilters;

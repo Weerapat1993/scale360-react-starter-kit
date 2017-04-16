@@ -1,11 +1,7 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 
 class Task extends React.Component {
-  static propTypes = {
-    updateTask: PropTypes.func.isRequired,
-  };
-
   constructor(props) {
     super(props)
 

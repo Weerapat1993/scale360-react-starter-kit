@@ -1,8 +1,9 @@
 import { CALL_API } from 'redux-api-middleware'
+import { allLoading } from '../core/loading/loadingActions'
 
 // Actions
-export const getApiMiddleware = (API, ACTION_TYPE, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
+export const getApiMiddleware = (API, ACTION_TYPE, Action, loading) => (dispatch, getState) => {
+  dispatch(allLoading(loading, true))
   dispatch({
     [CALL_API]: {
       endpoint: API,
@@ -12,7 +13,7 @@ export const getApiMiddleware = (API, ACTION_TYPE, loading) => (dispatch, getSta
         {
           type: ACTION_TYPE.SUCCESS,
           payload: (action, state, res) => {
-            dispatch(loading(false))
+            dispatch(allLoading(loading, false))
             return res.json()
           }
         },
@@ -21,7 +22,7 @@ export const getApiMiddleware = (API, ACTION_TYPE, loading) => (dispatch, getSta
           payload: (action, state, res) => {
             console.error(ACTION_TYPE.FAILURE);
             console.error(res);
-            dispatch(loading(false))
+            dispatch(allLoading(loading, false))
             return res.json()
           }
         }
@@ -30,51 +31,36 @@ export const getApiMiddleware = (API, ACTION_TYPE, loading) => (dispatch, getSta
   })
 }
 
-export const getFetchApi = (API, ACTION_TYPE, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
+/**
+ * GET Fetch API Data
+ * @param {string} API
+ * @param {string} ACTION_TYPE
+ * @param {function} Action
+ * @param {string} loading
+ */
+export const getFetchApi = (API, ACTION_TYPE, Action, loading) => (dispatch, getState) => {
+  dispatch(allLoading(loading, true))
   fetch(API)
     .then(res => res.json())
     .then(res => {
-      dispatch({
-        type: ACTION_TYPE.SUCCESS,
-        payload: res
-      })
-      dispatch(loading(false))
+      dispatch(Action(res, ACTION_TYPE.SUCCESS))
+      dispatch(allLoading(loading, false))
     })
     .catch(err => {
-      console.error(ACTION_TYPE.FAILURE);
-      console.error(err);
-      dispatch({
-        type: ACTION_TYPE.FAILURE,
-        payload: err
-      })
-      dispatch(loading(false))
+      console.error(ACTION_TYPE.FAILURE, err);
+      dispatch(allLoading(loading, false))
     })
 }
 
-export const createActions = (ACTION_TYPE, data, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
-  dispatch({
-    type: ACTION_TYPE,
-    data
-  })
-  dispatch(loading(false))
-}
-
-export const updateActions = (ACTION_TYPE, data, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
-  dispatch({
-    type: ACTION_TYPE,
-    data
-  })
-  dispatch(loading(false))
-}
-
-export const deleteActions = (ACTION_TYPE, key, loading) => (dispatch, getState) => {
-  dispatch(loading(true))
-  dispatch({
-    type: ACTION_TYPE,
-    key
-  })
-  dispatch(loading(false))
+/**
+ * Payload Actions
+ * @param {string} ACTION_TYPE
+ * @param {function} Action
+ * @param {*} payload
+ * @param {string} loading
+ */
+export const payloadActions = (ACTION_TYPE, Action, payload, loading) => (dispatch, getState) => {
+  dispatch(allLoading(loading, true))
+  dispatch(Action(payload, ACTION_TYPE.SUCCESS))
+  dispatch(allLoading(loading, false))
 }

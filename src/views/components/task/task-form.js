@@ -1,9 +1,6 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
 class TaskForm extends React.Component {
-  static propTypes = {
-    createTask: PropTypes.func.isRequired
-  };
   constructor(props, context) {
     super(props, context);
 
