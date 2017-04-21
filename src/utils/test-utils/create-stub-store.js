@@ -1,6 +1,5 @@
 import { applyMiddleware } from 'redux';
 
-
 export function createStubStore(state, middleware) {
   function store() {
     return {

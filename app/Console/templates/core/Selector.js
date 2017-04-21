@@ -1,5 +1,5 @@
 export function get${name_pascal}Filter(state, props) {
-  const ${name} = state.${name}
+  const ${name} = state.${name}.data
   const { filter } = props.location.query
 
   switch (filter) {

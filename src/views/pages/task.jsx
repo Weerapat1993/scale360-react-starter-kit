@@ -15,7 +15,7 @@ class Task extends Component {
 
   createTask(title) {
     let data = {
-      key: new Date().getTime(),
+      id: new Date().getTime(),
       title,
       completed: false
     }
@@ -26,18 +26,18 @@ class Task extends Component {
     this.props.taskActions.updateTask(data)
   }
 
-  deleteTask(key) {
-    this.props.taskActions.deleteTask(key)
+  deleteTask(id) {
+    this.props.taskActions.deleteTask(id)
   }
 
   render() {
     const { tasks, loading } = this.props;
     const data = tasks.map((item, i) => (
         <TaskItem
-          key={item.key}
+          key={item.id}
           task={item}
           updateTask={(data) => this.updateTask(data)}
-          deleteTask={(key) => this.deleteTask(key)}
+          deleteTask={(id) => this.deleteTask(id)}
         />
     ))
     return (
@@ -69,7 +69,7 @@ class Task extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   tasks: getTaskFilter(state,ownProps),
-  loading: state.loading.taskLoading
+  loading: state.task.loading
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

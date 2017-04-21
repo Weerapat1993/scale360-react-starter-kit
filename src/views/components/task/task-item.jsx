@@ -30,7 +30,7 @@ class Task extends React.Component {
       const title = this.state.title
 
       if (title.length && title !== task.title) {
-        this.props.updateTask({title , key: task.key });
+        this.props.updateTask({title , id: task.id });
       }
 
       this.stopEditing();
@@ -38,11 +38,11 @@ class Task extends React.Component {
   }
 
   toggleStatus(task) {
-    this.props.updateTask({ key: task.key, completed: !task.completed });
+    this.props.updateTask({ id: task.id, completed: !task.completed });
   }
 
-  deleteTask(key) {
-    this.props.deleteTask(key);
+  deleteTask(id) {
+    this.props.deleteTask(id);
   }
 
   renderTitle(task) {
@@ -121,7 +121,7 @@ class Task extends React.Component {
             aria-hidden={editing}
             aria-label="Delete task"
             className={classNames('btn task-item__button', {'hide': editing})}
-            onClick={() => this.deleteTask(task.key)}
+            onClick={() => this.deleteTask(task.id)}
             ref={c => this.deleteButton = c}
             type="button">
             <svg className="icon" width="24" height="24" viewBox="0 0 24 24">

@@ -43,12 +43,6 @@ then
     sh ./app/Console/build.sh ./app/Console/templates/core/index.js ./src/core/${CORE}/index.js
   fi
 
-  # Test API #
-  if ! [ -e "./public/assets/json/${CORE}.json" ]
-  then
-    sh ./app/Console/build.sh ./app/Console/templates/core/json_template.md ./public/assets/json/${CORE}.json
-  fi
-
   # File Tests #
   tests=( Actions Reducer Selector )
   for test in "${tests[@]}"
@@ -58,6 +52,11 @@ then
       sh ./app/Console/build.sh ./app/Console/templates/core/tests/${test}.js ./src/core/${CORE}/tests/${CORE}${test}.test.js
     fi
   done
+
+  if ! [ -e "./src/core/${CORE}/tests/data.js" ]
+  then
+    sh ./app/Console/build.sh ./app/Console/templates/core/tests/data.js ./src/core/${CORE}/tests/data.js
+  fi
 
   if [ $CHECK -eq 0 ]
   then

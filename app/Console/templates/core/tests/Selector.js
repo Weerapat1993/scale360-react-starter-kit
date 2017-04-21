@@ -1,18 +1,21 @@
 import { get${name_pascal}Filter } from '../${name}Selector'
 
 const initialState = {
-  ${name}: [
-    {
-      key: 1,
-      title: '${name_pascal} 101',
-      completed: true
-    },
-    {
-      key: 2,
-      title: '${name_pascal} 102',
-      completed: false
-    }
-  ]
+  task: {
+    loading: true,
+    data: [
+      {
+        id: 1,
+        title: '${name_pascal} 101',
+        completed: true
+      },
+      {
+        id: 2,
+        title: '${name_pascal} 102',
+        completed: false
+      }
+    ]
+  }
 }
 
 // Filter Data
@@ -31,14 +34,14 @@ describe('${name_pascal} Selector', () => {
       const recieved = get${name_pascal}Filter(initialState, props)
       const expected = getFilterData(initialState, props)
 
-      expect(expected).toEqual(recieved);
+      expect(recieved).toEqual(expected)
     })
   }
 })
 
 // Function Filter Data
 function getFilterData(state, props) {
-  const ${name} = state.${name}
+  const ${name} = state.${name}.data
   const { filter } = props.location.query
   switch (filter) {
     case 'active':

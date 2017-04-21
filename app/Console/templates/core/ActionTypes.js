@@ -1,4 +1,4 @@
-import { asyncActionType } from '../../utils/actionTypes'
+import { asyncActionType } from '../../utils'
 
 export const ${name_upper} = {
   FETCH: asyncActionType('FETCH_${name_upper}'),
