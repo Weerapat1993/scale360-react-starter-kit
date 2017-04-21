@@ -21,9 +21,9 @@ then
     fi
   done
 
-  if ! [ -e "./src/views/containers/${CORE}.js" ]
+  if ! [ -e "./src/views/containers/${CORE}.jsx" ]
   then
-    sh ./app/Console/build.sh ./app/Console/templates/Container.js ./src/views/containers/${CORE}.js
+    sh ./app/Console/build.sh ./app/Console/templates/Container.jsx ./src/views/containers/${CORE}.jsx
   else
     echo "${green} Container : ${CORE} is exists. ${reset}";
   fi

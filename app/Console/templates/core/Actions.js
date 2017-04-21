@@ -1,15 +1,27 @@
 import { API } from '../constants'
-import { getFetchApi, payloadActions } from '../../utils/callActions'
+import { fetchActions, payloadActions } from '../../utils'
 import { ${name_upper} } from './${name}ActionTypes'
 
-// SUCCESS
-export const fetch${name_pascal}Success = (payload, type) => ({ payload, type })
-export const create${name_pascal}Success = (payload, type) => ({ payload, type })
-export const update${name_pascal}Success = (payload, type) => ({ payload, type })
-export const delete${name_pascal}Success = (payload, type) => ({ payload, type })
+// FETCH_${name_upper}
+export const fetch${name_pascal} = () => fetchActions({
+  type: ${name_upper}.FETCH,
+  API: API.${name_upper}
+})
 
-// REQUEST
-export const fetch${name_pascal} = () => (getFetchApi(API.${name_upper}, ${name_upper}.FETCH, fetch${name_pascal}Success, '${name}Loading'))
-export const create${name_pascal} = (payload) => (payloadActions(${name_upper}.CREATE, create${name_pascal}Success, payload, '${name}Loading'))
-export const update${name_pascal} = (payload) => (payloadActions(${name_upper}.UPDATE, update${name_pascal}Success, payload, '${name}Loading'))
-export const delete${name_pascal} = (payload) => (payloadActions(${name_upper}.DELETE, delete${name_pascal}Success, payload, '${name}Loading'))
+// CREATE_${name_upper}
+export const create${name_pascal} = (payload) => payloadActions({
+  type: ${name_upper}.CREATE,
+  payload
+})
+
+// UPDATE_${name_upper}
+export const update${name_pascal} = (payload) => payloadActions({
+  type: ${name_upper}.UPDATE,
+  payload
+})
+
+// DELETE_${name_upper}
+export const delete${name_pascal} = (payload) => payloadActions({
+  type: ${name_upper}.DELETE,
+  payload
+})

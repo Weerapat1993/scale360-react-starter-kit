@@ -1,18 +1,21 @@
 import { getTaskFilter } from '../taskSelector'
 
 const initialState = {
-  task: [
-    {
-      key: 1,
-      title: 'Task 101',
-      completed: true
-    },
-    {
-      key: 2,
-      title: 'Task 102',
-      completed: false
-    }
-  ]
+  task: {
+    loading: true,
+    data: [
+      {
+        id: 1,
+        title: 'Task 101',
+        completed: true
+      },
+      {
+        id: 2,
+        title: 'Task 102',
+        completed: false
+      }
+    ]
+  }
 }
 
 // Filter Data
@@ -31,14 +34,14 @@ describe('Task Selector', () => {
       const recieved = getTaskFilter(initialState, props)
       const expected = getFilterData(initialState, props)
 
-      expect(expected).toEqual(recieved);
+      expect(recieved).toEqual(expected)
     })
   }
 })
 
 // Function Filter Data
 function getFilterData(state, props) {
-  const task = state.task
+  const task = state.task.data
   const { filter } = props.location.query
   switch (filter) {
     case 'active':

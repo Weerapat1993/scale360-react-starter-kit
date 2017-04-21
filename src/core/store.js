@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux'
+import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 // import { apiMiddleware } from 'redux-api-middleware'
@@ -16,6 +17,10 @@ const storeEnhancer = [
 
 const finalCreateStore = compose(...storeEnhancer)(createStore)
 
+// configureMockStore with unit test
+export const mockStore = configureMockStore(middlewares)
+
+// configureStore
 export default function configureStore(initialState) {
   return finalCreateStore(rootReducers, initialState)
 }

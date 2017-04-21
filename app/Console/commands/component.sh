@@ -21,9 +21,9 @@ then
     fi
   done
 
-  if ! [ -e "./src/views/components/${CORE}.js" ]
+  if ! [ -e "./src/views/components/${CORE}.jsx" ]
   then
-    sh ./app/Console/build.sh ./app/Console/templates/Component.js ./src/views/components/${CORE}.js
+    sh ./app/Console/build.sh ./app/Console/templates/Component.jsx ./src/views/components/${CORE}.jsx
   else
     echo "${green} Component : ${CORE} is exists. ${reset}";
   fi

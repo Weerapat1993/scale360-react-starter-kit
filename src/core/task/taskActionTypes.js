@@ -1,4 +1,4 @@
-import { asyncActionType } from '../../utils/actionTypes'
+import { asyncActionType } from '../../utils'
 
 export const TASK = {
   FETCH: asyncActionType('FETCH_TASK'),
