@@ -8,6 +8,7 @@ class Sidebar extends Component {
         <li><Link activeClassName="active" to="/home">Home</Link></li>
         <li><Link activeClassName="active" to="/about">About</Link></li>
         <li><Link activeClassName="active" to="/task">Task</Link></li>
+        <li><Link activeClassName="active" to="/form">Form</Link></li>
       </ul>
     )
   }

@@ -1,25 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { taskActions, getTaskFilter } from '../../core/task';
+import { reset } from 'redux-form';
+import { taskActions, getTaskFilter } from '../../../core/task';
 
-import TaskFilters from '../components/task/task-filters'
-import TaskItem from '../components/task/task-item'
-import TaskForm from '../components/task/task-form'
+import TaskFilters from './task-filters'
+import TaskItem from './task-item'
+import TaskReduxForm from '../../forms/TaskForm'
 
 class Task extends Component {
   componentDidMount() {
-    console.clear();
+    // console.clear();
     this.props.taskActions.fetchTask()
   }
 
-  createTask(title) {
-    let data = {
+  createTask(values, dispatch, props) {
+    const data = {
       id: new Date().getTime(),
-      title,
+      title: values.title,
       completed: false
     }
-    this.props.taskActions.createTask(data)
+    dispatch(taskActions.createTask(data));
+    dispatch(reset('TaskForm'));
   }
 
   updateTask(data) {
@@ -48,7 +50,7 @@ class Task extends Component {
         <div className="card-body">
           <div className="g-row">
             <div className="g-col">
-              <TaskForm createTask={(title) => this.createTask(title)} />
+              <TaskReduxForm onSubmit={this.createTask} />
             </div>
             <div className="g-col">
               <TaskFilters filter={this.props.location.query.filter} />
