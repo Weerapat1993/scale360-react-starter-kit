@@ -82,12 +82,8 @@
     "start": "node app/Scripts/start.js",
     "build": "node app/Scripts/build.js",
     "test": "node app/Scripts/tests.js --env=jsdom",
-    "test:full": "npm test -- --coverage",
     "help": "node app/Scripts/help.js",
-    "make:core": "sh ./command.sh core",
-    "make:container": "sh ./command.sh container",
-    "make:component": "sh ./command.sh component",
-    "make:page": "sh ./command.sh page"
+    "make": "sh ./command.sh"
   },
   "jest": {
     "collectCoverageFrom": [

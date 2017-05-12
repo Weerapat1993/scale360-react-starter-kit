@@ -9,7 +9,8 @@ class Home extends Component {
           Task Lists
         </div>
         <div className="card-body">
-          <Link to="/task" className="b">Task</Link>
+          <Link to="/task" className="b">Task</Link> <br/>
+          <Link to="/form" className="b">Form</Link>
         </div>
       </div>
     )

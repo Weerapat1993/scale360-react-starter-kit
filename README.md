@@ -143,11 +143,6 @@ Run Application ในโหมดผู้พัฒนา<br>
 Run Test ระบบเพื่อตรวจสอบความผิดพลาดหรือไม่ !!<br>
 สามารถตรวจสอบได้โดยที่ไม่ต้องเปิดบน Browser
 
-### `npm run test:full`
-
-Run Test ระบบเพื่อตรวจสอบความผิดพลาด เช่นเดียวกับ `npm test`<br>
-แต่จะแสดงผลในรูปแบบของตาราง โดยจะใช้คำสั่ง `npm test -- --coverage`
-
 ### `npm run build`
 
 สร้าง Application ขึ้นมาไว้ที่ Folder `build` <br>
@@ -159,7 +154,7 @@ Run Test ระบบเพื่อตรวจสอบความผิด�
 
 ใช้ตรวจสอบคำสั่งทั้งหมด บน `npm script`
 
-### `npm run make:core <name>`
+### `npm run make core <name>`
 
 สร้างไฟล์ Core ทั้งหมดลงบน `src/core` โดยประกอบด้วย
 - Action - สำหรับเรียก Action
@@ -169,7 +164,7 @@ Run Test ระบบเพื่อตรวจสอบความผิด�
 
 ยกตัวอย่างเช่น
 ```
-npm run make:core todo
+npm run make core todo
 ```
 เมื่อรันคำสั่งจะสร้างไฟล์ดังต่อไปนี้
 ```diff
@@ -181,6 +176,7 @@ src/
   core/
     todo/
 +     tests/
++       data.js
 +       todoActions.test.js
 +       todoReducer.test.js
 +       todoSelector.test.js
@@ -191,14 +187,14 @@ src/
 +     todoSelector.js
 ```
 
-### `npm run make:page <name>`
+### `npm run make page <name>`
 
 สร้างไฟล์ Page ขึ้นมาที่ `src/views/pages` <br>
 ประกอบด้วยหน้าเพจ Container จำนวน 1 หน้า
 
 ยกตัวอย่างเช่น
 ```
-npm run make:page todo
+npm run make page todo
 ```
 เมื่อรันคำสั่งจะสร้างไฟล์ดังต่อไปนี้
 ```diff
@@ -207,13 +203,31 @@ src/
     pages/
 +     todo.js
 ```
-### `npm run make:component <name>`
+
+### `npm run make form <reducer_name>`
+
+สร้างไฟล์ Page ขึ้นมาที่ `src/views/forms` <br>
+ประกอบด้วยหน้าเพจ Redux Form จำนวน 1 หน้า
+
+ยกตัวอย่างเช่น
+```
+npm run make form test
+```
+เมื่อรันคำสั่งจะสร้างไฟล์ดังต่อไปนี้
+```diff
+src/
+  views/
+    form/
++     TestForm.js
+```
+
+### `npm run make component <name>`
 
 สร้างไฟล์ Page ขึ้นมาที่ `src/views/components`
 
 ยกตัวอย่างเช่น
 ```
-npm run make:component TodoComponent
+npm run make component TodoComponent
 ```
 เมื่อรันคำสั่งจะสร้างไฟล์ดังต่อไปนี้
 ```diff
@@ -223,13 +237,13 @@ src/
 +     TodoComponent.js
 ```
 
-### `npm run make:container <name>`
+### `npm run make container <name>`
 
 สร้างไฟล์ Container ขึ้นมาที่ `src/views/containers`
 
 ยกตัวอย่างเช่น
 ```
-npm run make:container TodoContainer
+npm run make container TodoContainer
 ```
 เมื่อรันคำสั่งจะสร้างไฟล์ดังต่อไปนี้
 ```diff
@@ -246,10 +260,10 @@ NPM Commands
 |---|---|
 |npm start|Start webpack development server @ **localhost:3000**|
 |npm test|Run unit tests with `Jest`|
-|npm run test:full|`npm test -- --coverage`|
 |npm run build|Build Webpack to production|
 |npm run help|Check NPM Script in Console|
-|npm run make:core|Create New Core Action & Reducer|
-|npm run make:page|Create New Container Page|
-|npm run make:component|Create New Component|
-|npm run make:container|Create New Container|
+|npm run make core|Create New Core Action & Reducer|
+|npm run make page|Create New Container Page|
+|npm run make form|Create New Redux Form|
+|npm run make component|Create New Component|
+|npm run make container|Create New Container|

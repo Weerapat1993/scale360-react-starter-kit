@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
 import { taskReducer } from './task'
 
-const rootReducers = combineReducers({
+export default combineReducers({
+  form: formReducer,
   task: taskReducer,
 })
-
-export default rootReducers
