@@ -1,3 +1,3 @@
 import Task from './task'
 
-export { Task }
+export default Task
