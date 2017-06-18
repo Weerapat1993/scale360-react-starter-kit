@@ -1,7 +1,7 @@
 import React from 'react'
 import LoginForm from '../../forms/LoginForm'
 
-class Form extends React.Component {
+class Login extends React.Component {
   handleSubmit(values) {
     console.log(values);
     alert('Submit')
@@ -24,4 +24,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default Login;

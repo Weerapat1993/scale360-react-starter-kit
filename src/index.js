@@ -9,7 +9,7 @@ import configureStore from './core/store'
 
 // Import All StyleSheet
 import './views/styles/font-awesome/css/font-awesome.css'
-import './views/styles/scale360.scss'
+import './views/styles/bootstrap/app.scss'
 
 ReactDOM.render(
   <Provider store={configureStore()}>

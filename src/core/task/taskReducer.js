@@ -4,7 +4,7 @@ import { TASK } from './taskActionTypes'
 
 const initialState = {
   data: [],
-  loading: true
+  loading: false
 };
 
 export const taskReducer = (state = initialState, action) => {

@@ -1,7 +1,7 @@
 import React from 'react'
-import LoginForm from '../../forms/LoginForm'
+import RegisterForm from '../../forms/RegisterForm'
 
-class Form extends React.Component {
+class Register extends React.Component {
   handleSubmit(values) {
     console.log(values);
     alert('Submit')
@@ -12,10 +12,10 @@ class Form extends React.Component {
         <div className="col-md-8 col-md-offset-2">
           <div className="panel panel-default">
             <div className="panel-heading">
-              Login Form
+              Register Form
             </div>
             <div className="panel-body">
-              <LoginForm onSubmit={this.handleSubmit} />
+              <RegisterForm onSubmit={this.handleSubmit} />
             </div>
           </div>
         </div>
@@ -24,4 +24,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default Register;

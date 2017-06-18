@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap'
 import { Field, reduxForm } from 'redux-form';
-import { loginValidation } from '../../core/form/loginValidation'
+import { registerValidation } from '../../core/form/registerValidation'
 
 const getValidationState = (meta) => {
     if (!meta.touched || !meta.error) return 'success';
@@ -26,13 +26,14 @@ const renderField = (field) => (
   </FormGroup>
   )
 
-class LoginForm extends React.Component {
+class RegisterForm extends React.Component {
   render() {
     const { handleSubmit } = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <Field name='email' component={renderField} type='text' label='Email' placeholder='Email' />
         <Field name='password' component={renderField} type='password' label='Password' placeholder='Password' />
+        <Field name='password_confirmation' component={renderField} type='password' label='Confirm Password' placeholder='Confirm Password' />
         <div className='form-group'>
           <button className='btn btn-primary' type='submit'>Submit</button>
         </div>
@@ -42,9 +43,9 @@ class LoginForm extends React.Component {
 }
 
 // Decorate the form component
-LoginForm = reduxForm({
-  form: 'login', // a unique name for this form
-  validate: loginValidation,
-})(LoginForm);
+RegisterForm = reduxForm({
+  form: 'register', // a unique name for this form
+  validate: registerValidation,
+})(RegisterForm);
 
-export default LoginForm;
+export default RegisterForm;
